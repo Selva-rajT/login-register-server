@@ -38,11 +38,11 @@ module.exports=(db,dataType)=>{
            [error,hash]=await to(bcrypt.hash(user.password,salt));
            if(error) return TE('error while hashing the password');
 
-           
+
            user.password=hash;
         }})
 
-        Model.prototype.getJwt=async function(){
+    Model.prototype.getJwt=async function(){
             let err,token,encryptedToken;
                 token= 'Bearer '+jwt.sign({
                 id:this.id,

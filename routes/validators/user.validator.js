@@ -2,7 +2,7 @@
 const {body,query}=require('express-validator');
 
 const signupValidaor=[
-    body('userName').isString().trim().notEmpty().withMessage("invalid username"),
+    body('username').isString().trim().notEmpty().withMessage("invalid username"),
     body('email').isEmail().withMessage("invalid email"),
     body('password').isAlphanumeric().trim().notEmpty().withMessage("invlid password")
 ]

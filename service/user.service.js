@@ -6,9 +6,8 @@ const mailService=require('../service/mailService');
 const OtpService= require('../service/otpService');
 
 const signUp=async(userDetails)=>{
-
     let [error,Detail]=await to(user.create({
-        userName:userDetails.userName,
+        userName:userDetails.username,
         email:userDetails.email,
         password:userDetails.password
     }));

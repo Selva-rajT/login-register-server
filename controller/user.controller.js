@@ -6,6 +6,7 @@ const {signupValidaor,loginValidator,validateMailId,otpValidator,changePasswordV
 const {validate}=require('../middleware/validate-schema');
 
 const signUp=async(req,res)=>{
+    console.log(req.body);
     let [error,details]=await to(UserService.signUp(req.body));
     if(error) return ReE(res,error,422);
     return ReS(res,details,200);
@@ -33,7 +34,7 @@ const changePassword=async(req,res)=>{
     return ReS(res,change,200);
 }
 
-router.post('',signupValidaor,validate,signUp);
+router.post('/',signupValidaor,validate,signUp);
 router.get('/',loginValidator,validate,logIn);
 router.get('/v1',validateMailId,validate,sendOtpMail);
 router.get('/v2',otpValidator,validate,verifyOTP);

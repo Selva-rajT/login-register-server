@@ -23,9 +23,9 @@ const sendMailToUser=async function (receiver,mailContent,keyObject){
       
 
     const composeMail={
-        from:'abc@gmail.com',
+        from:'hogwards@edu.in',
         to:receiver,
-        subject:"testing ",
+        subject:"Hogwards university ",
         html:mailContent
     }
 

@@ -21,7 +21,7 @@ const ReS = function (res, data, code) { // Success Web Response
 };
 
 const to = function (promise) {
-console
+
   return promise
     .then(data => {
       return [null, data];

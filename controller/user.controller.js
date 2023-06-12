@@ -6,7 +6,6 @@ const {signupValidaor,loginValidator,validateMailId,otpValidator,changePasswordV
 const {validate}=require('../middleware/validate-schema');
 
 const signUp=async(req,res)=>{
-    console.log(req.body);
     let [error,details]=await to(UserService.signUp(req.body));
     if(error) return ReE(res,error,422);
     return ReS(res,details,200);
@@ -18,6 +17,7 @@ const logIn=async(req,res)=>{
     return ReS(res,details,200);
 }
 const sendOtpMail=async(req,res)=>{
+    console.log(req.query.email);
     let [error,otp]=await to (UserService.sendMailOTP(req.query.email));
     if(error) return ReE(res,error,422);
     return ReS(res,'otp sent to the registered mail id',200);

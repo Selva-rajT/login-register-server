@@ -6,13 +6,21 @@ const mailService=require('../service/mailService');
 const OtpService= require('../service/otpService');
 
 const signUp=async(userDetails)=>{
-    let [error,Detail]=await to(user.create({
-        userName:userDetails.username,
-        email:userDetails.email,
-        password:userDetails.password
+    let [err,exist]=await to(user.findOne({
+        where:{email:userDetails.email}
     }));
-    if(error) return TE(error.message);
-    return Detail;
+    if(err) return TE(err.message);
+    if(!exist){
+        let [error,Detail]=await to(user.create({
+            userName:userDetails.username,
+            email:userDetails.email,
+            password:userDetails.password
+        }));
+        if(error) return TE(error.message);
+        return Detail;
+    }
+    return TE("user  email already registered");
+    
 }
 module.exports.signUp=signUp;
 
@@ -77,3 +85,8 @@ const changePassword=async(newPassword,userEmail)=>{
     return updated;
 }
 module.exports.changePassword=changePassword;
+
+
+
+
+

@@ -24,7 +24,7 @@ const sendOtpMail=async(req,res)=>{
 }
 const verifyOTP=async(req,res)=>{
     let [err,verified]=await to(UserService.verifyOtp(req.query.otp));
-    if(err) return ReE(res,'wrong otp',422);
+    if(err) return ReE(res,err,422);
     if(verified)return ReS(res,verified,200);
 }
 

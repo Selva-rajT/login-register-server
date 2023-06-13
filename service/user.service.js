@@ -71,7 +71,7 @@ module.exports.sendMailOTP=sendMailOTP;
 
 
 const verifyOtp=async(otp)=>{
-    if(Date.now()>expiresIn) return false;
+    if(Date.now()>expiresIn) return TE("otp expired");
     return new Promise ((resolve,reject)=>{previousOtp==otp?resolve(true):reject(false)});
 }
 module.exports.verifyOtp=verifyOtp;
